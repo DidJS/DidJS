@@ -1,6 +1,6 @@
 define(['core/Shape/BaseShape'], function(BaseShape) {
-	function AABBObject(type, id, x, y, filled, fillStyle) {
-		BaseShape.call(this, type, id, x, y, filled, fillStyle);
+	function AABBObject(type, properties) {
+		BaseShape.call(this, type, properties);
 	}
 
 	AABBObject.prototype = Object.create(BaseShape.prototype);

@@ -1,11 +1,11 @@
 define(['core/Shape/BaseShape', 'core/Renderers/ShapeRenderer'], function(BaseShape, ShapeRenderer) {
 	
-	function Circle(id, x, y, radius, filled, fillStyle) {
-		this.radius = radius;
-		this.width = radius;
-		this.height = radius;
+	function Circle(properties) {
+		this.radius = properties.radius;
+		properties.width = properties.radius;
+		properties.height = properties.radius;
 
-		BaseShape.call(this, 'circle', id, x, y, filled, fillStyle);
+		BaseShape.call(this, 'circle', properties);
 	}
 
 	Circle.prototype = Object.create(BaseShape.prototype);

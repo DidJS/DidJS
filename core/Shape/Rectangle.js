@@ -1,9 +1,6 @@
 define(['core/Shape/AABBObject', 'core/Renderers/ShapeRenderer'], function(AABBObject, ShapeRenderer) {
-	function Rectangle(id, x, y, width, height, filled, fillStyle) {
-		this.width = width;
-		this.height = height;
-
-		AABBObject.call(this, 'rectangle', id, x, y, filled, fillStyle);
+	function Rectangle(properties) {
+		AABBObject.call(this, 'rectangle', properties);
 	}
 
 	Rectangle.prototype = Object.create(AABBObject.prototype);

@@ -7,7 +7,8 @@ define(function() {
 		var xhr = getXMLHttpRequest();
 		try {
 			if (xhr != null) {
-				var level = "http://localhost:3003/" + file;
+				var r = document.URL.split('/');
+				var level = document.URL.replace(r[r.length - 1], '') + file;
 				xhr.open("GET", level, false);
 				xhr.send(""); 
 				
