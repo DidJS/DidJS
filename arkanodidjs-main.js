@@ -4,23 +4,19 @@ require(['core/didjs'], function(DidJS) {
 	var registeredLevels = DidJS.Game.register('Resources/Arkanodid/').asPathFor('Files');
 	var registeredImages = DidJS.Game.register('Resources/Arkanodid/').asPathFor('Images');
 
-	registeredImages.onload = function() {
-		registeredLevels.load([{ name : 'level1', file : 'level1.txt' }])
-	}
+	registeredLevels.add([{ name : 'level1', file : 'level1.txt' }]);
+	registeredImages.add([{ name : 'ball', file : 'ball.gif' }]);
 
-	registeredImages.onerror = function(error) {
-		alert(error.message);
-	};
+	DidJS.Game.AssetManager.add(registeredLevels);
+	DidJS.Game.AssetManager.add(registeredImages);
 
-	registeredLevels.onload = function() {
+	DidJS.Game.AssetManager.onload = function() {
 		self.gameInit();
 	}
 
-	registeredLevels.onerror = function(error) {
+	DidJS.Game.AssetManager.onerror = function(error) {
 		alert(error.message);
 	}
-
-	registeredImages.load([{ name : 'ball', file : 'ball.gif' }]);
 
 
 	this.gameInit = function() {
@@ -66,7 +62,7 @@ require(['core/didjs'], function(DidJS) {
 		var boxx = 2;
 		var boxy = 10;
 
-		var level1 = DidJS.Game.getResource('level1');
+		var level1 = DidJS.Game.AssetManager.getResource('level1');
 		if (level1 != null) {
 			var createBrick = function(value, x, y) {
 				var brick = DidJS.Game.create('rectangle').withProperties({
@@ -206,4 +202,6 @@ require(['core/didjs'], function(DidJS) {
 
 		DidJS.Game.world.render();
 	}
+
+	DidJS.Game.AssetManager.loadAsync();
 })

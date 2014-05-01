@@ -1,71 +1,17 @@
-define(['core/Loaders/ResourceLoader', 
-	    'core/Shape/ShapeFactory', 
-	    'core/Keyboard'], function(ResourceLoader, ShapeFactory, Keyboard) {
+define(['core/Shape/ShapeFactory', 
+	    'core/Keyboard',
+	    'core/Assets/AssetManager',
+	    'core/Assets/AssetResource'], function(ShapeFactory, Keyboard, AssetManager, AssetResource) {
 	 function Game() {
-		var _resourcesInfo = [];
-		var resourceLoader = new ResourceLoader();
 		var _shapeFactory = new ShapeFactory();
-
+		this.AssetManager = new AssetManager();
 		this.world = null;
 		this.register = function(path) {
 			return {
 				asPathFor : function(resourcesType) {
-					var self = this;
-					return {
-						load : function(fileInfos) {
-							var self = this;
-							var resources = [];
-							var nbFiles = fileInfos.length;
-							var nbFileProcessed = 0;
-
-							fileInfos.forEach(function(fileInfo) {
-								var fullFileName = path + fileInfo.file;
-								resourceLoader.get(fullFileName, resourcesType, function(resource, error) {
-									if (error == null) {
-										nbFileProcessed++;
-										resources.push({ id : fileInfo.name, resource : resource});
-										if (nbFiles === nbFileProcessed) {
-											var resource = {
-												path : path,
-												resources : resources,
-												resourceType : resourcesType
-											};
-
-											_resourcesInfo.push(resource);
-											if (self.onload) {
-												self.onload();
-											}
-										}
-									}
-									else {
-										if (self.onerror) {
-											self.onerror(error);
-										}
-									}
-								})
-							});
-
-							return self;
-						}
-					}
-
-					return self;
+					return new AssetResource(path, resourcesType);
 				}
 			}
-		}
-
-		this.getResource = function(name) {
-			var res = null;
-			_resourcesInfo.forEach(function(resourceInfo) {
-				resourceInfo.resources.forEach(function(r) {
-					if (r.id === name) {
-						res = r;
-						return;
-					}
-				})
-			})
-
-			return res;
 		}
 
 		this.create = function(shape) {
@@ -80,7 +26,7 @@ define(['core/Loaders/ResourceLoader',
 			var self = this;
 			return {
 				withProperties : function(properties) {
-					properties.resourceInfo = self.getResource(resourceName);
+					properties.resourceInfo = DidJS.Game.Assets.getResource(resourceName);
 					properties.sourceX = 0;
 					properties.sourceY = 0;
 					return _shapeFactory.create(shapeType, properties);

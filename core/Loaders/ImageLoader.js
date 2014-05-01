@@ -13,7 +13,7 @@ define(['core/Utils/FileUtils', 'core/Loaders/BaseLoader'], function(FileUtils, 
 			myimage.src = file;
 
 			myimage.onerror = function() {
-				reject(Error("Erreur au chargement de l'image " + file));
+				reject(Error("An occured while loading file " + file));
 			}
 
 			myimage.onload = function() {
