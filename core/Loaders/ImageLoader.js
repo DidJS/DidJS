@@ -1,22 +1,27 @@
-define(['core/Utils/FileUtils'], function(FileUtils) {
+define(['core/Utils/FileUtils', 'core/Loaders/BaseLoader'], function(FileUtils, BaseLoader) {
 	var images = [];
 
 	function ImageLoader() {
+		BaseLoader.call(this);
 	}
 
+	ImageLoader.prototype = Object.create(BaseLoader.prototype);
+
 	ImageLoader.prototype.load = function(file, callback) {
+		return new Promise(function(resolve, reject) {
+			var myimage = new Image();
+			myimage.src = file;
 
-		var myimage = new Image();
-		myimage.src = file;
+			myimage.onerror = function() {
+				reject(Error("Erreur au chargement de l'image " + file));
+			}
 
-		myimage.onerror = function() {
-			callback(null, { message : "Erreur au chargement de l'image " + file });
-		}
-
-		myimage.onload = function() {
-			images.push(myimage);
-			callback(myimage, null);
-		}
+			myimage.onload = function() {
+				images.push(myimage);
+				resolve(myimage);
+			}
+		})
+		
 	}
 
 	ImageLoader.prototype.get = function(name) {

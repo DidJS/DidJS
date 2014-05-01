@@ -1,23 +1,27 @@
 require(['core/didjs'], function(DidJS) {
 	var self = this;
 
-	var loadLevels = function() {
-		var registeredLevels = DidJS.Game.register('Resources/Arkanodid/').asPathFor('Files')
-			.load([{ name : 'level1', file : 'level1.txt' }], self.gameInit)
-	
-		registeredLevels.onerror = function(error) {
-			alert(error);
-		}
+	var registeredLevels = DidJS.Game.register('Resources/Arkanodid/').asPathFor('Files');
+	var registeredImages = DidJS.Game.register('Resources/Arkanodid/').asPathFor('Images');
+
+	registeredImages.onload = function() {
+		registeredLevels.load([{ name : 'level1', file : 'level1.txt' }])
 	}
 
-	var registeredPath = DidJS.Game.register('Resources/Arkanodid/').asPathFor('Images')
-				.load([{ name : 'ball', file : 'ball.gif' }], loadLevels);
-
-	registeredPath.onerror = function(error) {
-		alert(error);
+	registeredImages.onerror = function(error) {
+		alert(error.message);
 	};
 
-	
+	registeredLevels.onload = function() {
+		self.gameInit();
+	}
+
+	registeredLevels.onerror = function(error) {
+		alert(error.message);
+	}
+
+	registeredImages.load([{ name : 'ball', file : 'ball.gif' }]);
+
 
 	this.gameInit = function() {
 		DidJS.Game.world = new DidJS.World('mycanvas');

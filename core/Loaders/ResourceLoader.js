@@ -5,58 +5,26 @@ define(['core/Loaders/ImageLoader', 'core/Loaders/FileLoader'], function(ImageLo
 		this._fileLoader = new FileLoader();
 	}
 
-	ResourceLoader.prototype.getAll = function(files, type, callback)  {
-		var self = this;
-		var nbFiles = files.length;
-		var nbFilesProcessed = 0;
-		if (type === 'Images') {
-			var images = [];
-			files.forEach(function(file) {
-				self._imgLoader.load(file, function(img, e) {
-					if (img) {
-						images.push(img);
-						nbFilesProcessed++;
-						if (nbFilesProcessed === nbFiles) {
-							callback(images, e);
-						}
-					}
-					else {
-						callback(null, e);
-						return;
-					}
-				});
-			})
-		}
-		if (type === 'Files') {
-			var contents = [];
-			files.forEach(function(file) {
-				self._fileLoader.load(file, function(content, e) {
-					if (content) {
-						contents.push(content);
-						nbFilesProcessed++;
-						if (nbFilesProcessed === nbFiles) {
-							callback(contents, e)
-						}
-					}
-					else {
-						callback(null, e);
-					}
-				})
-			})
-		}
-	}
-
 	ResourceLoader.prototype.get = function(name, type, callback) {
-		var resource = null;
+		var loader = null;
 
 		if (type === 'Images') {
-			this._imgLoader.load(name, callback);
+			loader = this._imgLoader;
 		}
 		else if (type === 'Files') {
-			this._fileLoader.load(name, callback);
+			loader = this._fileLoader;
 		}
-		
-		return resource;
+
+		if (loader) {
+			loader.load(name).then(function(result) {
+				callback(result, null);
+			}, function(error) {
+				callback(null, error);
+			});
+		}
+		else {
+			callback(null, Error("loader unknown : " + type));
+		}
 	}
 
 	return ResourceLoader;

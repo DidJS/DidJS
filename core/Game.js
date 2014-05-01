@@ -12,15 +12,16 @@ define(['core/Loaders/ResourceLoader',
 				asPathFor : function(resourcesType) {
 					var self = this;
 					return {
-						load : function(fileInfos, callback) {
+						load : function(fileInfos) {
+							var self = this;
 							var resources = [];
 							var nbFiles = fileInfos.length;
 							var nbFileProcessed = 0;
 
 							fileInfos.forEach(function(fileInfo) {
 								var fullFileName = path + fileInfo.file;
-								resourceLoader.get(fullFileName, resourcesType, function(resource, ex) {
-									if (ex == null) {
+								resourceLoader.get(fullFileName, resourcesType, function(resource, error) {
+									if (error == null) {
 										nbFileProcessed++;
 										resources.push({ id : fileInfo.name, resource : resource});
 										if (nbFiles === nbFileProcessed) {
@@ -31,12 +32,14 @@ define(['core/Loaders/ResourceLoader',
 											};
 
 											_resourcesInfo.push(resource);
-											callback();
+											if (self.onload) {
+												self.onload();
+											}
 										}
 									}
 									else {
 										if (self.onerror) {
-											self.onerror(ex.message);
+											self.onerror(error);
 										}
 									}
 								})
