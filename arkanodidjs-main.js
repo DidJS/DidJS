@@ -1,8 +1,8 @@
 require(['core/didjs'], function(DidJS) {
 	var self = this;
 
-	var registeredLevels = DidJS.Game.register('Resources/Arkanodid/').asPathFor('Files');
-	var registeredImages = DidJS.Game.register('Resources/Arkanodid/').asPathFor('Images');
+	var registeredLevels = DidJS.Game.register('Resources/Arkanodid/').for('Files');
+	var registeredImages = DidJS.Game.register('Resources/Arkanodid/').for('Images');
 
 	registeredLevels.add
 	(
@@ -25,7 +25,6 @@ require(['core/didjs'], function(DidJS) {
 
 	DidJS.Game.AssetManager.add(registeredLevels);
 	DidJS.Game.AssetManager.add(registeredImages);
-
 
 	DidJS.Game.AssetManager.loadAsync().then(function(result) {
 		gameInit();

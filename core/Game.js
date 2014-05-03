@@ -8,7 +8,7 @@ define(['core/Shape/ShapeFactory',
 		this.world = null;
 		this.register = function(path) {
 			return {
-				asPathFor : function(resourcesType) {
+				for : function(resourcesType) {
 					return new AssetResource(path, resourcesType);
 				}
 			}
