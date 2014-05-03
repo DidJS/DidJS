@@ -9,27 +9,30 @@ define(['core/Loaders/ImageLoader', 'core/Loaders/FileLoader'], function(ImageLo
 		var _assetResources = [];
 		var _resourcesInfo = [];
 		var totalFiles = 0;
+		var self = this;
 
-		this.get = function(name, type, callback) {
-			var loader = null;
+		function executeLoader(name, type) {
+			return new Promise(function(resolve, reject) {
+				var loader = null;
 
-			if (type === 'Images') {
-				loader = this._imgLoader;
-			}
-			else if (type === 'Files') {
-				loader = this._fileLoader;
-			}
+				if (type === 'Images') {
+					loader = self._imgLoader;
+				}
+				else if (type === 'Files') {
+					loader = self._fileLoader;
+				}
 
-			if (loader) {
-				loader.load(name).then(function(result) {
-					callback(result, null);
-				}, function(error) {
-					callback(null, error);
-				});
-			}
-			else {
-				callback(null, Error("loader unknown : " + type));
-			}
+				if (loader) {
+					loader.load(name).then(function(result) {
+						resolve(result);
+					}, function(error) {
+						reject(error);
+					});
+				}
+				else {
+					reject(Error("loader unknown : " + type));
+				}
+			})
 		}
 
 		this.add = function(assetResource) {
@@ -38,20 +41,16 @@ define(['core/Loaders/ImageLoader', 'core/Loaders/FileLoader'], function(ImageLo
 		}
 
 		this.loadAsync = function() {
-			var resources = [];
-			var nbAssetsProcessed = 0;
-			var nbAssets = _assetResources.length;
-			var nbTotalFilesProcessed = 0;
-			var self = this;
+			return new Promise(function(resolve, reject) {
+				var resources = [];
+				var nbTotalFilesProcessed = 0;
 
-			_assetResources.forEach(function(aResource) {
-				nbAssetsProcessed++;
-				var nbFileProcessed = 0;
-				var nbFiles = aResource.getResources().length;
-				aResource.getResources().forEach(function(resource) {
-					var fullFileName = aResource.path + resource.file;
-					self.get(fullFileName, aResource.resourcesType, function(result, error) {
-						if (error == null) {
+				_assetResources.forEach(function(aResource) {
+					var nbFileProcessed = 0;
+					var nbFiles = aResource.getResources().length;
+					aResource.getResources().forEach(function(resource) {
+						var fullFileName = aResource.path + resource.file;
+						executeLoader(fullFileName, aResource.resourcesType).then(function(result) {
 							nbFileProcessed++;
 							nbTotalFilesProcessed++;
 
@@ -65,21 +64,15 @@ define(['core/Loaders/ImageLoader', 'core/Loaders/FileLoader'], function(ImageLo
 							}
 
 							if (totalFiles === nbTotalFilesProcessed) {
-								if (self.onload) {
-									self.onload();
-								}
+								resolve();
 							}
-						}
-						else {
-							if (self.onerror) {
-								self.onerror(error);
-							}
-							return;
-						}
+						}, function(error) {
+							reject(error);
+						})
 					})
-				})
-				
-			});
+					
+				});
+			})
 		}
 
 		this.getResource = function(name) {

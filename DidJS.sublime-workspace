@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"reg",
+				"registeredImages"
+			],
+			[
+				"st",
+				"statusText"
+			],
+			[
+				"register",
+				"registeredLevels"
+			],
+			[
+				"regi",
+				"registeredPath"
+			],
+			[
 				"Ia",
 				"ImageLoader"
 			],
@@ -498,49 +514,58 @@
 			[
 				"ima",
 				"imageNames"
-			],
-			[
-				"im",
-				"imageNames"
-			],
-			[
-				"go",
-				"goUp"
-			],
-			[
-				"move",
-				"moveLeft"
-			],
-			[
-				"sha",
-				"shapeA"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "core/Loaders/FileLoader.js",
+			"file": "arkanodidjs-main.js",
 			"settings":
 			{
-				"buffer_size": 899,
+				"buffer_size": 4778,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "core/Loaders/BaseLoader.js",
+			"file": "core/Assets/AssetResource.js",
 			"settings":
 			{
-				"buffer_size": 170,
+				"buffer_size": 355,
 				"line_ending": "Windows",
 				"name": "define(function() {"
 			}
 		},
 		{
-			"file": "arkanodidjs-main.js",
+			"file": "core/Assets/AssetManager.js",
 			"settings":
 			{
-				"buffer_size": 4647,
+				"buffer_size": 2312,
+				"line_ending": "Windows",
+				"name": "define(function() {"
+			}
+		},
+		{
+			"file": "core/Game.js",
+			"settings":
+			{
+				"buffer_size": 1829,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "core/didjs.js",
+			"settings":
+			{
+				"buffer_size": 263,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "core/world.js",
+			"settings":
+			{
+				"buffer_size": 3277,
 				"line_ending": "Windows"
 			}
 		},
@@ -548,7 +573,15 @@
 			"file": "core/Loaders/ImageLoader.js",
 			"settings":
 			{
-				"buffer_size": 805,
+				"buffer_size": 846,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "core/Loaders/FileLoader.js",
+			"settings":
+			{
+				"buffer_size": 651,
 				"line_ending": "Windows"
 			}
 		}
@@ -577,6 +610,10 @@
 	},
 	"file_history":
 	[
+		"/D/dev/git/public/DidJS/core/Loaders/ResourceLoader.js",
+		"/D/dev/git/public/DidJS/core/Loaders/FileLoader.js",
+		"/D/dev/git/public/DidJS/core/Loaders/ImageLoader.js",
+		"/D/dev/git/public/DidJS/core/Loaders/BaseLoader.js",
 		"/D/divers/Maniac Mansion 1+2/Day of the Tentacle(dosbox)/!Install.French.bat",
 		"/D/dev/git/DidJS/core/Loaders/FileLoader.js",
 		"/D/dev/git/DidJS/core/Shape/Rectangle.js",
@@ -690,9 +727,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
+			"",
 			"D:\\dev\\git\\DidJS\\core",
 			"D:\\dev\\git\\InteractiveResume\\js",
 			""
@@ -703,6 +741,11 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Assets",
+			"AssetsAssetManagerAssetManager",
+			"Assets",
+			"_resourcesInfo",
+			"fileInfo",
 			"_boundaryOnXMin",
 			"_gameObjects",
 			"bricks",
@@ -784,6 +827,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"aResource",
 			"_bricks",
 			"circle",
 			"x",
@@ -813,23 +857,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "core/Loaders/FileLoader.js",
+					"file": "arkanodidjs-main.js",
 					"settings":
 					{
-						"buffer_size": 899,
+						"buffer_size": 4778,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								344,
-								344
+								358,
+								358
 							]
 						],
 						"settings":
@@ -845,18 +889,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "core/Loaders/BaseLoader.js",
+					"file": "core/Assets/AssetResource.js",
 					"settings":
 					{
-						"buffer_size": 170,
+						"buffer_size": 355,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								144,
-								144
+								73,
+								73
 							]
 						],
 						"settings":
@@ -872,18 +916,45 @@
 				},
 				{
 					"buffer": 2,
-					"file": "arkanodidjs-main.js",
+					"file": "core/Assets/AssetManager.js",
 					"settings":
 					{
-						"buffer_size": 4647,
+						"buffer_size": 2312,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								206,
-								206
+								2115,
+								2115
+							]
+						],
+						"settings":
+						{
+							"auto_name": "define(function() {",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 70.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "core/Game.js",
+					"settings":
+					{
+						"buffer_size": 1829,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8,
+								8
 							]
 						],
 						"settings":
@@ -898,19 +969,99 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "core/Loaders/ImageLoader.js",
+					"buffer": 4,
+					"file": "core/didjs.js",
 					"settings":
 					{
-						"buffer_size": 805,
+						"buffer_size": 263,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								229,
-								169
+								108,
+								108
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "core/world.js",
+					"settings":
+					{
+						"buffer_size": 3277,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "core/Loaders/ImageLoader.js",
+					"settings":
+					{
+						"buffer_size": 846,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								481,
+								481
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "core/Loaders/FileLoader.js",
+					"settings":
+					{
+						"buffer_size": 651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -983,6 +1134,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 246.0,
+	"side_bar_width": 260.0,
 	"status_bar_visible": true
 }
