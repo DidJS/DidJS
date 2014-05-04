@@ -33,12 +33,12 @@ require(['core/didjs'], function(DidJS) {
 	});
 
 	function gameInit() {
-		DidJS.Game.scene = new DidJS.Scene('mycanvas');
+		var scene = new DidJS.Scene('mycanvas');
 		var width = 400, height = 330;
 		var _padSpeed = 7;
 
-		DidJS.Game.scene.setBoundariesOnX(0, width);
-		DidJS.Game.scene.setBoundariesOnY(0, height);
+		scene.setBoundariesOnX(0, width);
+		scene.setBoundariesOnY(0, height);
 
 		var padWidth = 50, padHeight = 10;
 
@@ -135,7 +135,7 @@ require(['core/didjs'], function(DidJS) {
 			})
 		});
 
-		DidJS.Game.scene.setCollisionObjects(ball, ballCollisionObjects);
+		scene.setCollisionObjects(ball, ballCollisionObjects);
 
 		var angleX = 2, angleY = -4 /*-4*/;
 
@@ -154,7 +154,7 @@ require(['core/didjs'], function(DidJS) {
 			}
 
 			if (boundaryStatus.onYMax) {
-				DidJS.Game.stopTick();
+				scene.tickStopped = true;
 			}
 		}
 
@@ -170,7 +170,7 @@ require(['core/didjs'], function(DidJS) {
 			}
 
 			if (object.id.substring(0, 5) === "brick") {
-				DidJS.Game.scene.remove(object);
+				scene.remove(object);
 			}
 		}
 
@@ -213,17 +213,17 @@ require(['core/didjs'], function(DidJS) {
 			}
 		});
 
-		DidJS.Game.scene.add(ball);
-		DidJS.Game.scene.add(pad);
+		scene.add(ball);
+		scene.add(pad);
 		_bricks.forEach(function(brick) {
 			brick.forEach(function(b) {
 				if (b !== null) {
-					DidJS.Game.scene.add(b);
+					scene.add(b);
 				}
 			})
 		})
 
-		DidJS.Game.scene.render();
+		DidJS.Game.render(scene);
 	}
 
 })

@@ -74,6 +74,10 @@ define(['core/Shape/ShapeFactory',
 				}
 			}
 		}
+
+		this.render = function(scene) {
+			scene.render();
+		}
 	}
 
 	return Game;
