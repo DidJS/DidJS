@@ -19,7 +19,7 @@ require(['core/didjs'], function(DidJS) {
 			{ name : 'ball', file : 'ball.gif' },
 			{ name : 'background1', file : 'background_level1.gif'},
 			{ name : 'background2', file : 'background_level2.gif'},
-			{ name : 'background3', file : 'background_level3.gif'},
+			{ name : 'background3', file : 'background_level3.gif'}
 		]
 	);
 
@@ -33,12 +33,12 @@ require(['core/didjs'], function(DidJS) {
 	});
 
 	function gameInit() {
-		DidJS.Game.world = new DidJS.World('mycanvas');
+		DidJS.Game.scene = new DidJS.Scene('mycanvas');
 		var width = 400, height = 330;
 		var _padSpeed = 7;
 
-		DidJS.Game.world.setBoundariesOnX(0, width);
-		DidJS.Game.world.setBoundariesOnY(0, height);
+		DidJS.Game.scene.setBoundariesOnX(0, width);
+		DidJS.Game.scene.setBoundariesOnY(0, height);
 
 		var padWidth = 50, padHeight = 10;
 
@@ -135,7 +135,7 @@ require(['core/didjs'], function(DidJS) {
 			})
 		});
 
-		DidJS.Game.world.setCollisionObjects(ball, ballCollisionObjects);
+		DidJS.Game.scene.setCollisionObjects(ball, ballCollisionObjects);
 
 		var angleX = 2, angleY = -4 /*-4*/;
 
@@ -170,7 +170,7 @@ require(['core/didjs'], function(DidJS) {
 			}
 
 			if (object.id.substring(0, 5) === "brick") {
-				DidJS.Game.world.remove(object);
+				DidJS.Game.scene.remove(object);
 			}
 		}
 
@@ -186,6 +186,8 @@ require(['core/didjs'], function(DidJS) {
 		}
 
 		var keyboard = DidJS.Game.createKeyboard().connectTo(pad);
+		var keyboardScene = DidJS.Game.createKeyboard();
+
 
 		keyboard.redefineKey('left', function() {
 			pad.position.X -= _padSpeed;
@@ -203,17 +205,25 @@ require(['core/didjs'], function(DidJS) {
 
 		})
 
-		DidJS.Game.world.add(ball);
-		DidJS.Game.world.add(pad);
+		keyboardScene.addButton({
+			name : 'pause',
+			key : 80,
+			strokeMethod: function(gObject) {
+				console.log('pause!');
+			}
+		});
+
+		DidJS.Game.scene.add(ball);
+		DidJS.Game.scene.add(pad);
 		_bricks.forEach(function(brick) {
 			brick.forEach(function(b) {
 				if (b !== null) {
-					DidJS.Game.world.add(b);
+					DidJS.Game.scene.add(b);
 				}
 			})
 		})
 
-		DidJS.Game.world.render();
+		DidJS.Game.scene.render();
 	}
 
 })

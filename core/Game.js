@@ -5,7 +5,7 @@ define(['core/Shape/ShapeFactory',
 	 function Game() {
 		var _shapeFactory = new ShapeFactory();
 		this.AssetManager = new AssetManager();
-		this.world = null;
+		this.scene = null;
 		this.register = function(path) {
 			return {
 				for : function(resourcesType) {
@@ -58,7 +58,7 @@ define(['core/Shape/ShapeFactory',
 		}
 
 		this.stopTick = function() {
-			this.world.tickStopped = true;
+			this.scene.tickStopped = true;
 		}
 
 		this.setAnimation = function(animationName, animate) {

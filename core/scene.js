@@ -2,12 +2,12 @@ var DidJS = DidJS || {};
 
 define(['core/Renderers/Renderer',
 	    'core/Collider/Collider'], function(Renderer, Collider) {
-	DidJS.World = function(canvasName, width, height) {
+	DidJS.Scene = function(canvasName, width, height) {
 		var self = this;
 		var _boundaryOnXMin, _boundaryOnXMax, _boundaryOnYMin, _boundaryOnYMax;
 		var _renderer;
-		var _worldObjects = [];
-		var _collider = new Collider(_worldObjects);
+		var _sceneObjects = [];
+		var _collider = new Collider(_sceneObjects);
 		var _collisionObjects = [];
 		var _objectsToRemove = [];
 		this.tickStopped = false;
@@ -37,7 +37,7 @@ define(['core/Renderers/Renderer',
 
 		var removeObjects = function() {
 			_objectsToRemove.forEach(function(o) {
-				_worldObjects.splice(o.index, 1);
+				_sceneObjects.splice(o.index, 1);
 			})
 
 			_objectsToRemove = [];
@@ -45,7 +45,7 @@ define(['core/Renderers/Renderer',
 
 		var gameLoop = function() {
 			_renderer.clearScene();
-			_worldObjects.forEach(function(obj) {
+			_sceneObjects.forEach(function(obj) {
 				if (obj.onTick) {
 					obj.onTick();
 				}
@@ -104,11 +104,11 @@ define(['core/Renderers/Renderer',
 		}
 
 		this.add = function(gameObject) {
-			_worldObjects.push(gameObject);
+			_sceneObjects.push(gameObject);
 		}
 
 		this.remove = function(gameObject) {
-			var i = _worldObjects.indexOf(gameObject);
+			var i = _sceneObjects.indexOf(gameObject);
 			_objectsToRemove.push({index : i, item : gameObject});
 		}
 
@@ -140,5 +140,5 @@ define(['core/Renderers/Renderer',
 	}
 
 
-	return DidJS.World;
+	return DidJS.Scene;
 })

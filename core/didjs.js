@@ -1,9 +1,9 @@
 var DidJS = DidJS || {};
 
 define(['core/Game', 
-		'core/world', 
+		'core/scene', 
 		'core/Vector', 
-		'core/AnimationManager'], function(Game, World, Vector, AnimationManager, Assets) {
+		'core/AnimationManager'], function(Game, Scene, Vector, AnimationManager) {
 	DidJS.Game = new Game();
 	DidJS.AnimationManager = new AnimationManager();
 

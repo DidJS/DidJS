@@ -151,30 +151,12 @@ define(function() {
 			if (index === -1) {
 				keysStroke.push(e.keyCode);
 			}
-
-			if (self.onKeyDown) {
-				self._keys.forEach(function(keyProperties) {
-					if (e.keyCode == keyProperties.key) {
-						self.onKeyDown(keyProperties);
-						
-					}
-				});
-			}
 		});
 
 		window.addEventListener("keyup", function(e) {
 			var index = keysStroke.indexOf(e.keyCode);
 			if (index !== -1) {
 				keysStroke.splice(index, 1);
-			}
-
-			if (self.onKeyUp) {
-				self._keys.forEach(function(keyProperties) {
-					if (e.keyCode == keyProperties.key) {
-						self.onKeyUp(keyProperties);
-						
-					}
-				});
 			}
 		});
 	}
