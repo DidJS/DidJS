@@ -1,6 +1,7 @@
 var DidJS = DidJS || {};
 
-define(function() {
+define(['core/Events/EventManager'], function(EventManager) {
+	
 	function BaseShape(type, properties) {
 		this.type = type;
 		this.id = properties.resourceInfo.id;
@@ -16,6 +17,8 @@ define(function() {
 		this.velX = properties.velX;
 		this.velY = properties.velY;
 		this.visible = true;
+
+		this.eventManager = new EventManager();
 	}
 
 	BaseShape.prototype.getShiftValues = function() {
@@ -27,6 +30,20 @@ define(function() {
 
 	BaseShape.prototype.draw = function(ctx) {
 
+	}
+
+	BaseShape.prototype.when = function(eventName) {
+		var e = this.eventManager.add(eventName);
+		return {
+			then : function(callback) {
+				e.register(callback);
+			}
+		}
+	}
+
+	BaseShape.prototype.hasEvent = function(eventName) {
+		var e = this.eventManager.getEvent(eventName);
+		return e || { do : function(){}};
 	}
 
 	return BaseShape;

@@ -46,9 +46,7 @@ define(['core/Renderers/Renderer',
 		var gameLoop = function() {
 			_renderer.clearScene();
 			_sceneObjects.forEach(function(obj) {
-				if (obj.onTick) {
-					obj.onTick();
-				}
+				obj.hasEvent('onTick').do();
 
 				if (obj.keyboard) {
 					obj.keyboard.stroke();
@@ -56,23 +54,21 @@ define(['core/Renderers/Renderer',
 
 				var boundaryStatus = self.getBoundariesStatusFor(obj);
 				if (boundaryStatus.onXMin || boundaryStatus.onXMax || boundaryStatus.onYMin || boundaryStatus.onYMax) {
-					if (obj.onBoundaryCollision) {
-						obj.onBoundaryCollision(boundaryStatus);
-					}
+					obj.hasEvent('onBoundaryCollision').do(boundaryStatus);
 				}
 
 				var collisionObjects = _collisionObjects[obj.id];
-				if (collisionObjects && obj.onCollisionWith) {
+				if (collisionObjects) {
 					collisionObjects.forEach(function(cObject) {
 						if (obj.type === 'circle') {
 							var collisionResult = _collider.circleCollision(cObject, obj);
 							if (collisionResult !== '') {
-						    	obj.onCollisionWith(cObject, collisionResult);
+						    	obj.hasEvent('onCollisionWith').do(cObject, collisionResult);
 							}
 						}
 						else {
 							if (_collider.collisionBetweenAABBs(cObject, obj)) {
-								obj.onCollisionWith(cObject);
+								obj.hasEvent('onCollisionWith').do(cObject);
 							}
 
 						}

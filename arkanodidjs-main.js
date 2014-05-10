@@ -33,7 +33,26 @@ require(['core/didjs'], function(DidJS) {
 	});
 
 	function gameInit() {
+		function menu() {
+			var menuScene = new DidJS.Scene('mycanvas');
+			var optionPlay = DidJS.Game.create('rectangle').withProperties( {
+				position : new DidJS.Vector(200,200),
+				width : 100,
+				height : 50,
+				filled : true,
+				fillStyle : 'blue'
+			});
+
+			menuScene.add(optionPlay);
+
+			return menuScene;
+		}
+
 		var scene = new DidJS.Scene('mycanvas');
+
+		var menuScene = menu();
+
+
 		var width = 400, height = 330;
 		var _padSpeed = 7;
 
@@ -139,12 +158,12 @@ require(['core/didjs'], function(DidJS) {
 
 		var angleX = 2, angleY = -4 /*-4*/;
 
-		ball.onTick = function() {
-			this.position.X += 1 * angleX;
-			this.position.Y += 1 * angleY;
-		}
+		ball.when('onTick').then(function() {
+			ball.position.X += 1 * angleX;
+			ball.position.Y += 1 * angleY;
+		})
 
-		ball.onBoundaryCollision = function(boundaryStatus) {
+		ball.when('onBoundaryCollision').then(function(boundaryStatus) {
 			if (boundaryStatus.onXMin || boundaryStatus.onXMax) {
 				angleX *= -1;
 			}
@@ -156,34 +175,34 @@ require(['core/didjs'], function(DidJS) {
 			if (boundaryStatus.onYMax) {
 				scene.tickStopped = true;
 			}
-		}
+		});
 
-		ball.onCollisionWith = function(object, where) {
+		ball.when('onCollisionWith').then(function(object, where) {
 			if (where === 'top' || where === 'bottom') {
 				angleY *= -1;
-				this.position.Y += 1 * angleY;
+				ball.position.Y += 1 * angleY;
 			}
 
 			if (where === 'right' || where === 'left') {
 				angleX *= -1;
-				this.position.X += 1 * angleX;
+				ball.position.X += 1 * angleX;
 			}
 
 			if (object.id.substring(0, 5) === "brick") {
 				scene.remove(object);
 			}
-		}
+		});
 
-		pad.onBoundaryCollision = function(boundaryStatus) {
+		pad.when('onBoundaryCollision').then(function(boundaryStatus) {
 			if (boundaryStatus.onXMax){
-				this.position.X = width - this.width;
+				pad.position.X = width - pad.width;
 				pad.speed = 0;
 			}
 			if (boundaryStatus.onXMin){
-				this.position.X = 0;
+				pad.position.X = 0;
 				pad.speed = 0;
 			}
-		}
+		});
 
 		var keyboard = DidJS.Game.createKeyboard().connectTo(pad);
 		var keyboardScene = DidJS.Game.createKeyboard();
