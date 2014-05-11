@@ -5,7 +5,7 @@ define(['core/Shape/ShapeFactory',
 	 function Game() {
 		var _shapeFactory = new ShapeFactory();
 		this.AssetManager = new AssetManager();
-		this.scene = null;
+		
 		this.register = function(path) {
 			return {
 				for : function(resourcesType) {
@@ -67,7 +67,8 @@ define(['core/Shape/ShapeFactory',
 		}
 
 		this.render = function(scene) {
-			scene.render();
+			this.scene = scene;
+			this.scene.render();
 		}
 	}
 

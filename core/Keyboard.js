@@ -113,24 +113,24 @@ define(function() {
 			return { 
 				toXAxis : function(direction) {
 					gObject.position.X = gObject.position.X + (gObject.velX * direction);
-					var boundariesStatus = DidJS.Game.world.getBoundariesStatusFor(gObject);
+					var boundariesStatus = DidJS.Game.scene.getBoundariesStatusFor(gObject);
 
 					if (boundariesStatus.onXMin) {
-						gObject.position.X = DidJS.Game.world.getBoundaryOnXMin();
+						gObject.position.X = DidJS.Game.scene.getBoundaryOnXMin();
 					}
 					else if (boundariesStatus.onXMax) {
-						gObject.position.X = DidJS.Game.world.getBoundaryOnXMax() - gObject.width; 
+						gObject.position.X = DidJS.Game.scene.getBoundaryOnXMax() - gObject.width; 
 					}
 				},
 				toYAxis : function(direction) {
 					gObject.position.Y = gObject.position.Y + gObject.velY * direction;
-					var boundariesStatus = DidJS.Game.world.getBoundariesStatusFor(gObject);
+					var boundariesStatus = DidJS.Game.scene.getBoundariesStatusFor(gObject);
 
 					if (boundariesStatus.onYMin) {
-						gObject.position.Y = DidJS.Game.world.getBoundaryOnYMin();
+						gObject.position.Y = DidJS.Game.scene.getBoundaryOnYMin();
 					}
 					else if (boundariesStatus.onYMax) {
-						gObject.position.Y = DidJS.Game.world.getBoundaryOnYMax() - gObject.height; 
+						gObject.position.Y = DidJS.Game.scene.getBoundaryOnYMax() - gObject.height; 
 					}
 					
 				}

@@ -22,6 +22,16 @@ define(['core/Events/EventManager'], function(EventManager) {
 		this.velY = properties.velY;
 		this.visible = true;
 
+		this.text = properties.text;
+		this.font = properties.font;
+		this.textColor = properties.textColor;
+
+		if (properties.hasOwnProperty('textPosition')) {
+			this.textPosition = properties.textPosition;
+			this.textPosition.x += this.position.X;
+			this.textPosition.y += this.position.Y;
+		}
+
 		this.eventManager = new EventManager();
 	}
 

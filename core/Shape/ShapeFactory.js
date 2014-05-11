@@ -1,4 +1,9 @@
-define(['core/Renderers/ShapeRenderer', 'core/Shape/Circle', 'core/Shape/Rectangle', 'core/Shape/Square'], function(ShapeRenderer, Circle, Rectangle, Square) {
+define([
+		'core/Renderers/ShapeRenderer', 
+		'core/Shape/Circle', 
+		'core/Shape/Rectangle', 
+		'core/Shape/Square', 
+		'core/Shape/Text'], function(ShapeRenderer, Circle, Rectangle, Square, Text) {
 	function ShapeFactory() {
 
 		this.create = function(shape, properties) {
@@ -18,6 +23,9 @@ define(['core/Renderers/ShapeRenderer', 'core/Shape/Circle', 'core/Shape/Rectang
 			}
 			else if (shape === 'rectangle') {
 				return createRectangle(properties);
+			}
+			else if (shape === 'text') {
+				return createText(properties);
 			}
 			else {
 				throw 'Shape ' + shape + ' unknown';
@@ -40,6 +48,12 @@ define(['core/Renderers/ShapeRenderer', 'core/Shape/Circle', 'core/Shape/Rectang
 			var rectangle = new Rectangle(properties);
 
 			return rectangle;
+		}
+
+		var createText = function(properties) {
+			var text = new Text(properties);
+
+			return text;
 		}
 	}
 
