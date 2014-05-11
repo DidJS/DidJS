@@ -44,47 +44,48 @@ define(['core/Renderers/Renderer',
 		}
 
 		var gameLoop = function() {
-			_renderer.clearScene();
-			_sceneObjects.forEach(function(obj) {
-				obj.hasEvent('onTick').do();
-
-				if (obj.keyboard) {
-					obj.keyboard.stroke();
-				}
-
-				var boundaryStatus = self.getBoundariesStatusFor(obj);
-				if (boundaryStatus.onXMin || boundaryStatus.onXMax || boundaryStatus.onYMin || boundaryStatus.onYMax) {
-					obj.hasEvent('onBoundaryCollision').do(boundaryStatus);
-				}
-
-				var collisionObjects = _collisionObjects[obj.id];
-				if (collisionObjects) {
-					collisionObjects.forEach(function(cObject) {
-						if (obj.type === 'circle') {
-							var collisionResult = _collider.circleCollision(cObject, obj);
-							if (collisionResult !== '') {
-						    	obj.hasEvent('onCollisionWith').do(cObject, collisionResult);
-							}
-						}
-						else {
-							if (_collider.collisionBetweenAABBs(cObject, obj)) {
-								obj.hasEvent('onCollisionWith').do(cObject);
-							}
-
-						}
-					});
-
-					removeChildrenObjects(obj);
-				}
-
-				 DidJS.AnimationManager.animate(obj);
-				 _renderer.draw(obj);
-
-			});
-
-			removeObjects();
-
 			if (!self.tickStopped) {
+				_renderer.clearScene();
+				_sceneObjects.forEach(function(obj) {
+					obj.hasEvent('onTick').do();
+
+					if (obj.keyboard) {
+						obj.keyboard.stroke();
+					}
+
+					var boundaryStatus = self.getBoundariesStatusFor(obj);
+					if (boundaryStatus.onXMin || boundaryStatus.onXMax || boundaryStatus.onYMin || boundaryStatus.onYMax) {
+						obj.hasEvent('onBoundaryCollision').do(boundaryStatus);
+					}
+
+					var collisionObjects = _collisionObjects[obj.id];
+					if (collisionObjects) {
+						collisionObjects.forEach(function(cObject) {
+							if (obj.type === 'circle') {
+								var collisionResult = _collider.circleCollision(cObject, obj);
+								if (collisionResult !== '') {
+							    	obj.hasEvent('onCollisionWith').do(cObject, collisionResult);
+								}
+							}
+							else {
+								if (_collider.collisionBetweenAABBs(cObject, obj)) {
+									obj.hasEvent('onCollisionWith').do(cObject);
+								}
+
+							}
+						});
+
+						removeChildrenObjects(obj);
+					}
+
+					 DidJS.AnimationManager.animate(obj);
+					 _renderer.draw(obj);
+
+				});
+
+				removeObjects();
+
+			
 				requestAnimationFrame(gameLoop);
 			}
 		}

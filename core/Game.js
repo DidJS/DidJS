@@ -70,6 +70,11 @@ define(['core/Shape/ShapeFactory',
 			this.scene = scene;
 			this.scene.render();
 		}
+
+		this.remove = function(scene) {
+			this.scene.tickStopped = true;
+			delete this.scene;
+		}
 	}
 
 	return Game;

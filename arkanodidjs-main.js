@@ -32,94 +32,232 @@ require(['core/didjs'], function(DidJS) {
 		alert(error.message);
 	});
 
+	var width = 400, height = 330;
+
 	function gameInit() {
 
-		var width = 400, height = 330;
+		var menuScene = menu(function(choice) {
+			if (choice === 'play') {
+				DidJS.Game.remove(menuScene);
+				var playScene = play();
+				DidJS.Game.render(playScene);
+			}
 
-		function menu() {
-			var menuScene = new DidJS.Scene('mycanvas');
-			var positionSelectorX = (width / 2) - (150 / 4) - 50;
-			var positionSelectorY = 130;
+			if (choice === 'credits') {
+
+			}
+		});
+
+
+		DidJS.Game.render(menuScene);
+	}
+
+	function menu(func) {
+		var menuScene = new DidJS.Scene('mycanvas');
+		menuScene.id = 'menuScene';
+
+		var positionSelectorX = (width / 2) - (150 / 4) - 50;
+		var positionSelectorY = 130;
+
+		var selector = DidJS.Game.create('circle', {
+			id : 'selector',
+			position : new DidJS.Vector(positionSelectorX, positionSelectorY),
+			radius : 4,
+			velX : 0,
+			velY : 10,
+			filled : true,
+			fillStyle : 'red'
+		});
+
+		var title = DidJS.Game.create('text', {
+			id : 'menuTitle',
+			position : new DidJS.Vector((width / 2) - (150 / 4) - 30, 70),
+			text : 'Arkanodid',
+			font : '25px cursive',
+			textColor : 'black',
+			textPosition : { x : 2, y : 2 }
+		})
+
+		var optionPlay = DidJS.Game.create('rectangle', {
+			id : 'menuPlay',
+			position : new DidJS.Vector((width / 2) - (150 / 4) - 30, 120),
+			width : 150,
+			height : 20,
+			filled : true,
+			fillStyle : 'blue',
+			text : 'Play',
+			font : '15px cursive',
+			textColor : 'black',
+			textPosition : { x : 62, y : 15 }
+		});
+
+		var optionCredits = DidJS.Game.create('rectangle', {
+			id : 'menuCredits',
+			position : new DidJS.Vector((width / 2) - (150 / 4) - 30, 170),
+			width : 150,
+			height : 20,
+			filled : true,
+			fillStyle : 'blue',
+			text : 'Credits',
+			font : '15px cursive',
+			textColor : 'black',
+			textPosition : { x : 52, y : 15 }
+		});
+
+		var keyboard = DidJS.Game.createKeyboard().connectTo(selector);
+
+		keyboard.redefineKey('left', function() {
+			
+		})
+
+		keyboard.redefineKey('right', function() {
+			
+		})
+
+		keyboard.redefineKey('up', function() {
+			if (selector.position.Y > positionSelectorY) {
+				selector.position.Y = positionSelectorY;
+			}
+		})
+
+		keyboard.redefineKey('down', function() {
+			if (selector.position.Y < positionSelectorY + 50) {
+				selector.position.Y = positionSelectorY + 50;
+			}
+		})
+
+		keyboard.addButton({
+			name : 'select',
+			key : 13,
+			strokeMethod: function(gObject) {
+				if (selector.position.Y = positionSelectorY) {
+					menuScene.remove(selector);
+					menuScene.remove(title);
+					menuScene.remove(optionPlay);
+					menuScene.remove(optionCredits);
+					func('play');
+				}
+			}
+		});
+
+		menuScene.add(title);
+		menuScene.add(selector);
+		menuScene.add(optionPlay);
+		menuScene.add(optionCredits);
+
+		return menuScene;
+	}
+
+	function play() {
+
+		var pauseMenu = function(func) {
+			var pauseScene = new DidJS.Scene('mycanvas');
+			pauseScene.id = 'pauseScene';
+
+			var positionSelectorX = 70;
+			var positionSelectorY = 170;
+
+			var rectangleScene = DidJS.Game.create('rectangle', {
+				id : 'rectangleScene',
+				position : new DidJS.Vector(50, 120),
+				width : 250,
+				height : 150,
+				filled : true,
+				fillStyle : 'gray'
+			});
 
 			var selector = DidJS.Game.create('circle', {
 				id : 'selector',
 				position : new DidJS.Vector(positionSelectorX, positionSelectorY),
 				radius : 4,
 				velX : 0,
-				velY : 10,
+				velY : 0,
 				filled : true,
 				fillStyle : 'red'
 			});
 
 			var title = DidJS.Game.create('text', {
-				id : 'menuTitle',
-				position : new DidJS.Vector((width / 2) - (150 / 4) - 30, 70),
-				text : 'Arkanodid',
-				font : '25px cursive',
+				id : 'pauseTitle',
+				position : new DidJS.Vector(120, 130),
+				text : 'Your choice :',
+				font : '20px cursive',
 				textColor : 'black',
 				textPosition : { x : 2, y : 2 }
 			})
 
-			var optionPlay = DidJS.Game.create('rectangle', {
-				id : 'menuPlay',
-				position : new DidJS.Vector((width / 2) - (150 / 4) - 30, 120),
-				width : 150,
+			var optionResume = DidJS.Game.create('rectangle', {
+				id : 'menuResume',
+				position : new DidJS.Vector(positionSelectorX + 30, positionSelectorY - 10),
+				width : 70,
 				height : 20,
 				filled : true,
 				fillStyle : 'blue',
-				text : 'Play',
+				text : 'Resume',
 				font : '15px cursive',
 				textColor : 'black',
-				textPosition : { x : 62, y : 15 }
+				textPosition : { x : 15, y : 15 }
 			});
 
-			var optionCredits = DidJS.Game.create('rectangle', {
-				id : 'menuCredits',
-				position : new DidJS.Vector((width / 2) - (150 / 4) - 30, 170),
-				width : 150,
+			var optionExit = DidJS.Game.create('rectangle', {
+				id : 'menuExit',
+				position : new DidJS.Vector(positionSelectorX + 160, positionSelectorY - 10),
+				width : 70,
 				height : 20,
 				filled : true,
 				fillStyle : 'blue',
-				text : 'Credits',
+				text : 'Exit',
 				font : '15px cursive',
 				textColor : 'black',
-				textPosition : { x : 52, y : 15 }
+				textPosition : { x : 15, y : 15 }
 			});
 
 			var keyboard = DidJS.Game.createKeyboard().connectTo(selector);
 
 			keyboard.redefineKey('left', function() {
-				
+				if (selector.position.X > positionSelectorX) {
+					selector.position.X = positionSelectorX;
+				}
 			})
 
 			keyboard.redefineKey('right', function() {
-				
+				if (selector.position.X < positionSelectorX + 140) {
+					selector.position.X = positionSelectorX + 140;
+				}
 			})
 
 			keyboard.redefineKey('up', function() {
-				if (selector.position.Y > positionSelectorY) {
-					selector.position.Y = positionSelectorY;
-				}
+				
 			})
 
 			keyboard.redefineKey('down', function() {
-				if (selector.position.Y < positionSelectorY + 50) {
-					selector.position.Y = positionSelectorY + 50;
-				}
+				
 			})
 
-			menuScene.add(title);
-			menuScene.add(selector);
-			menuScene.add(optionPlay);
-			menuScene.add(optionCredits);
+			keyboard.addButton({
+				name : 'select',
+				key : 13,
+				strokeMethod: function(gObject) {
+					console.log('a choice must be made');
+					if (selector.position.X = positionSelectorX + 120) {
+						pauseScene.remove(selector);
+						pauseScene.remove(title);
+						pauseScene.remove(optionResume);
+						pauseScene.remove(optionExit);
+						func('exit');
+					}
+				}
+			});
 
-			return menuScene;
+			pauseScene.add(title);
+			pauseScene.add(selector);
+			pauseScene.add(optionResume);
+			pauseScene.add(optionExit);
+
+			return pauseScene;
 		}
 
 		var scene = new DidJS.Scene('mycanvas');
-
-		var menuScene = menu();
-
+		scene.id = 'playScene';
 
 		var _padSpeed = 7;
 
@@ -234,6 +372,7 @@ require(['core/didjs'], function(DidJS) {
 
 			if (boundaryStatus.onYMax) {
 				scene.tickStopped = true;
+
 			}
 		});
 
@@ -284,11 +423,22 @@ require(['core/didjs'], function(DidJS) {
 
 		})
 
-		keyboardScene.addButton({
+		keyboard.addButton({
 			name : 'pause',
 			key : 80,
 			strokeMethod: function(gObject) {
 				console.log('pause!');
+				if (DidJS.Game.scene) {
+					scene.tickStopped = true;
+					var p = pauseMenu(function(choice) {
+						if (choice === 'exit') {
+							DidJS.Game.remove(scene);
+							gameInit();
+						}
+					});
+
+					DidJS.Game.render(p);
+				}
 			}
 		});
 
@@ -302,7 +452,7 @@ require(['core/didjs'], function(DidJS) {
 			})
 		})
 
-		DidJS.Game.render(menuScene);
+		return scene;
 	}
 
 })
