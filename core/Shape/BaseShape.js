@@ -4,13 +4,17 @@ define(['core/Events/EventManager'], function(EventManager) {
 	
 	function BaseShape(type, properties) {
 		this.type = type;
-		this.id = properties.resourceInfo.id;
+		this.id = properties.id;
 		this.position = properties.position;
 		this.width = properties.width;
 		this.height = properties.height;
 		this.filled = properties.filled;
 		this.fillStyle = properties.fillStyle;
-		this.image = properties.resourceInfo.resource;
+		
+		if (properties.hasOwnProperty('resourceInfo')) {
+			this.image = properties.resourceInfo.resource
+		}
+
 		this.sourceX = properties.sourceX;
 		this.sourceY = properties.sourceY;
 		this.animations = properties.animations;

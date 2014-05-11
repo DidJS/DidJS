@@ -2,8 +2,8 @@ define(['core/Renderers/ShapeRenderer', 'core/Shape/Circle', 'core/Shape/Rectang
 	function ShapeFactory() {
 
 		this.create = function(shape, properties) {
-			if (!properties.resourceInfo) {
-				properties.resourceInfo = {id : shape};
+			if (!properties.hasOwnProperty('id')) {
+				properties.id = shape;
 			}
 
 			if (!properties.animations){

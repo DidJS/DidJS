@@ -14,24 +14,15 @@ define(['core/Shape/ShapeFactory',
 			}
 		}
 
-		this.create = function(shape) {
-			return {
-				withProperties : function(properties) {
-					return _shapeFactory.create(shape, properties);
-				}
-			}
+		this.create = function(shape, properties) {
+			return _shapeFactory.create(shape, properties);
 		}
 
-		this.createGameObject = function(resourceName, shapeType) {
-			var self = this;
-			return {
-				withProperties : function(properties) {
-					properties.resourceInfo = DidJS.Game.Assets.getResource(resourceName);
-					properties.sourceX = 0;
-					properties.sourceY = 0;
-					return _shapeFactory.create(shapeType, properties);
-				}
-			}
+		this.createGameObject = function(resourceName, shapeType, properties) {
+			properties.resourceInfo = DidJS.Game.Assets.getResource(resourceName);
+			properties.sourceX = 0;
+			properties.sourceY = 0;
+			return _shapeFactory.create(shapeType, properties);
 		}
 
 		this.createKeyboard = function(keys) {

@@ -35,7 +35,8 @@ require(['core/didjs'], function(DidJS) {
 	function gameInit() {
 		function menu() {
 			var menuScene = new DidJS.Scene('mycanvas');
-			var optionPlay = DidJS.Game.create('rectangle').withProperties( {
+			var optionPlay = DidJS.Game.create('rectangle', {
+				id : 'menu',
 				position : new DidJS.Vector(200,200),
 				width : 100,
 				height : 50,
@@ -67,7 +68,8 @@ require(['core/didjs'], function(DidJS) {
 		var brickWidth = 40;
 		var brickHeight = 20;
 
-		var pad = DidJS.Game.create('rectangle').withProperties({
+		var pad = DidJS.Game.create('rectangle', {
+			id : 'mypad',
 			position : new DidJS.Vector(posPadX, posPadY),
 			width : padWidth,
 			height : padHeight,
@@ -75,11 +77,10 @@ require(['core/didjs'], function(DidJS) {
 			velY : 1,
 			filled : true,
 			fillStyle : "red"
-		})
+		});
 
-		pad.id = 'mypad';
-
-		var ball = DidJS.Game.create('circle').withProperties({
+		var ball = DidJS.Game.create('circle', {
+			id : 'ball',
 			position : new DidJS.Vector(200, 100),
 			radius : 4,
 			velX : 1,
@@ -97,21 +98,14 @@ require(['core/didjs'], function(DidJS) {
 		var level1 = DidJS.Game.AssetManager.getResource('level1');
 		if (level1 != null) {
 			var createBrick = function(value, x, y) {
-				var brick = DidJS.Game.create('rectangle').withProperties({
+				return DidJS.Game.create('rectangle', {
+					id : 'brick' + x + '_' + y,
 					position : new DidJS.Vector(boxx + (brickWidth * x), boxy + (brickHeight * y)),
 					width : brickWidth,
 					height : brickHeight,
 					filled : true,
-					fillStyle : "yellow"
+					fillStyle : value === "2" ? 'blue' : 'yellow'
 				});
-
-				if (value === "2") {
-					brick.fillStyle = 'blue';
-				}
-
-				brick.id = 'brick' + x + '_' + y;
-
-				return brick;
 			}
 
 			function fillBricks(oData) {
