@@ -238,12 +238,20 @@ require(['core/didjs'], function(DidJS) {
 				key : 13,
 				strokeMethod: function(gObject) {
 					console.log('a choice must be made');
-					if (selector.position.X = positionSelectorX + 120) {
+					if (selector.position.X === positionSelectorX + 140) {
 						pauseScene.remove(selector);
 						pauseScene.remove(title);
 						pauseScene.remove(optionResume);
 						pauseScene.remove(optionExit);
 						func('exit');
+					}
+
+					if (selector.position.X === positionSelectorX) {
+						pauseScene.remove(selector);
+						pauseScene.remove(title);
+						pauseScene.remove(optionResume);
+						pauseScene.remove(optionExit);
+						func('resume');
 					}
 				}
 			});
@@ -409,19 +417,25 @@ require(['core/didjs'], function(DidJS) {
 
 		keyboard.redefineKey('left', function() {
 			pad.position.X -= _padSpeed;
-		})
+		});
 
 		keyboard.redefineKey('right', function() {
 			pad.position.X += _padSpeed;
-		})
+		});
 
 		keyboard.redefineKey('up', function() {
 
-		})
+		});
 
 		keyboard.redefineKey('down', function() {
 
-		})
+		});
+
+		function recordSceneForResume() {
+			return scene;
+		}
+
+		var recordGameScene;
 
 		keyboard.addButton({
 			name : 'pause',
@@ -429,11 +443,18 @@ require(['core/didjs'], function(DidJS) {
 			strokeMethod: function(gObject) {
 				console.log('pause!');
 				if (DidJS.Game.scene) {
+					recordGameScene = recordSceneForResume();
 					scene.tickStopped = true;
 					var p = pauseMenu(function(choice) {
 						if (choice === 'exit') {
 							DidJS.Game.remove(scene);
 							gameInit();
+						}
+
+						if (choice === 'resume') {
+							DidJS.Game.remove(scene);
+							recordGameScene.tickStopped = false;
+							DidJS.Game.render(recordGameScene);
 						}
 					});
 

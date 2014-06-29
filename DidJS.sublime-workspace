@@ -4,6 +4,90 @@
 		"selected_items":
 		[
 			[
+				"pa",
+				"pauseMenu"
+			],
+			[
+				"option",
+				"optionCredits"
+			],
+			[
+				"posit",
+				"position"
+			],
+			[
+				"fill",
+				"filled"
+			],
+			[
+				"posi",
+				"position"
+			],
+			[
+				"po",
+				"positionSelectorX"
+			],
+			[
+				"position",
+				"positionSelectorX"
+			],
+			[
+				"rect",
+				"rectangle"
+			],
+			[
+				"tex",
+				"textPosition"
+			],
+			[
+				"has",
+				"hasOwnProperty"
+			],
+			[
+				"pro",
+				"properties"
+			],
+			[
+				"opi",
+				"optionCredits"
+			],
+			[
+				"cre",
+				"create"
+			],
+			[
+				"menu",
+				"menuScene"
+			],
+			[
+				"get",
+				"getEvent"
+			],
+			[
+				"Eve",
+				"EventManager"
+			],
+			[
+				"eve",
+				"eventName"
+			],
+			[
+				"ev",
+				"eventName"
+			],
+			[
+				"index",
+				"indexOfEvent"
+			],
+			[
+				"fil",
+				"filled"
+			],
+			[
+				"g",
+				"Game"
+			],
+			[
 				"reg",
 				"registeredImages"
 			],
@@ -34,10 +118,6 @@
 			[
 				"fr",
 				"forEach"
-			],
-			[
-				"index",
-				"indexOf"
 			],
 			[
 				"_re",
@@ -84,20 +164,8 @@
 				"aabb1"
 			],
 			[
-				"get",
-				"getBoundingBoxFor"
-			],
-			[
-				"fill",
-				"fillStyle"
-			],
-			[
 				"resou",
 				"resourceInfo"
-			],
-			[
-				"pro",
-				"properties"
 			],
 			[
 				"proto",
@@ -228,10 +296,6 @@
 				"aObject"
 			],
 			[
-				"cre",
-				"createdObject"
-			],
-			[
 				"pr",
 				"properties"
 			],
@@ -242,10 +306,6 @@
 			[
 				"rou",
 				"resourceInfo"
-			],
-			[
-				"po",
-				"properties"
 			],
 			[
 				"resr",
@@ -428,10 +488,6 @@
 				"newSpeed"
 			],
 			[
-				"g",
-				"gObject"
-			],
-			[
 				"Game",
 				"GameEngine"
 			],
@@ -458,62 +514,6 @@
 			[
 				"cal",
 				"callbackComplete"
-			],
-			[
-				"Image",
-				"ImageLoader"
-			],
-			[
-				"nbI",
-				"nbImagesProcessed"
-			],
-			[
-				"circu",
-				"circuit1"
-			],
-			[
-				"circuit",
-				"circuit1"
-			],
-			[
-				"circui",
-				"circuit1_mask"
-			],
-			[
-				"initi",
-				"initializeToad"
-			],
-			[
-				"coordon",
-				"coordonatesToad"
-			],
-			[
-				"initia",
-				"initializePole"
-			],
-			[
-				"G",
-				"GameObject"
-			],
-			[
-				"init",
-				"initializePlateformes"
-			],
-			[
-				"ini",
-				"initializeSkillBoxes"
-			],
-			[
-				"inter",
-				"interrogationBoxes"
-			],
-			[
-				"plain",
-				"plainBoxes"
-			],
-			[
-				"ima",
-				"imageNames"
 			]
 		]
 	},
@@ -523,33 +523,88 @@
 			"file": "arkanodidjs-main.js",
 			"settings":
 			{
-				"buffer_size": 4778,
+				"buffer_size": 10415,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "core/Assets/AssetResource.js",
+			"file": "core/scene.js",
 			"settings":
 			{
-				"buffer_size": 355,
+				"buffer_size": 3276,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "core/Shape/Text.js",
+			"settings":
+			{
+				"buffer_size": 330,
 				"line_ending": "Windows",
 				"name": "define(function() {"
 			}
 		},
 		{
-			"file": "core/Assets/AssetManager.js",
+			"file": "core/Shape/BaseShape.js",
 			"settings":
 			{
-				"buffer_size": 2312,
-				"line_ending": "Windows",
-				"name": "define(function() {"
+				"buffer_size": 1499,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "core/Shape/AABBObject.js",
+			"settings":
+			{
+				"buffer_size": 225,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "core/Shape/Rectangle.js",
+			"settings":
+			{
+				"buffer_size": 364,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "core/Renderers/ShapeRenderer.js",
+			"settings":
+			{
+				"buffer_size": 2852,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "core/Keyboard.js",
+			"settings":
+			{
+				"buffer_size": 3433,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "core/Game.js",
 			"settings":
 			{
-				"buffer_size": 1829,
+				"buffer_size": 1846,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "core/Shape/Circle.js",
+			"settings":
+			{
+				"buffer_size": 578,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "core/Shape/ShapeFactory.js",
+			"settings":
+			{
+				"buffer_size": 1247,
 				"line_ending": "Windows"
 			}
 		},
@@ -557,31 +612,23 @@
 			"file": "core/didjs.js",
 			"settings":
 			{
-				"buffer_size": 263,
+				"buffer_size": 255,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "core/world.js",
+			"file": "core/Renderers/Renderer.js",
 			"settings":
 			{
-				"buffer_size": 3277,
+				"buffer_size": 329,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "core/Loaders/ImageLoader.js",
+			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 846,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "core/Loaders/FileLoader.js",
-			"settings":
-			{
-				"buffer_size": 651,
+				"buffer_size": 456,
 				"line_ending": "Windows"
 			}
 		}
@@ -610,9 +657,26 @@
 	},
 	"file_history":
 	[
-		"/D/dev/git/public/DidJS/core/Loaders/ResourceLoader.js",
+		"/D/dev/git/public/DidJS/core/Shape/ShapeFactory.js",
+		"/D/dev/git/public/DidJS/core/Shape/Rectangle.js",
+		"/D/dev/git/public/DidJS/core/Shape/AABBObject.js",
+		"/D/dev/git/public/DidJS/core/Assets/AssetManager.js",
+		"/D/dev/git/public/DidJS/core/Shape/Circle.js",
+		"/D/dev/git/public/DidJS/core/Events/Event.js",
+		"/D/dev/git/public/DidJS/core/Events/EventManager.js",
+		"/D/dev/git/public/DidJS/core/didjs.js",
+		"/D/dev/git/public/DidJS/core/scene.js",
+		"/D/dev/git/public/DidJS/core/Game.js",
+		"/D/dev/git/public/DidJS/core/Keyboard.js",
+		"/D/dev/git/public/DidJS/core/Shape/BaseShape.js",
+		"/D/dev/git/public/DidJS/Events/EventManager.js",
+		"/D/dev/git/public/DidJS/Events/Event.js",
+		"/D/dev/git/public/DidJS/core/Assets/AssetResource.js",
 		"/D/dev/git/public/DidJS/core/Loaders/FileLoader.js",
 		"/D/dev/git/public/DidJS/core/Loaders/ImageLoader.js",
+		"/D/dev/git/public/DidJS/core/Assets/AssetTypes.js",
+		"/D/dev/git/public/DidJS/core/world.js",
+		"/D/dev/git/public/DidJS/core/Loaders/ResourceLoader.js",
 		"/D/dev/git/public/DidJS/core/Loaders/BaseLoader.js",
 		"/D/divers/Maniac Mansion 1+2/Day of the Tentacle(dosbox)/!Install.French.bat",
 		"/D/dev/git/DidJS/core/Loaders/FileLoader.js",
@@ -741,6 +805,18 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"play()",
+			"tickStopped",
+			"gameInit",
+			"world",
+			"createGameObject",
+			"scene",
+			"DidJS.Game.scene",
+			"world",
+			"getBoundaryOnXMin",
+			"setBoundariesOnX",
+			"getBoundaryOnXMin",
+			"setBoundariesOnY",
 			"Assets",
 			"AssetsAssetManagerAssetManager",
 			"Assets",
@@ -827,6 +903,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"scene",
 			"aResource",
 			"_bricks",
 			"circle",
@@ -857,7 +934,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -865,15 +942,15 @@
 					"file": "arkanodidjs-main.js",
 					"settings":
 					{
-						"buffer_size": 4778,
+						"buffer_size": 10415,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								358,
-								358
+								1141,
+								1141
 							]
 						],
 						"settings":
@@ -882,25 +959,52 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 438.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "core/Assets/AssetResource.js",
+					"file": "core/scene.js",
 					"settings":
 					{
-						"buffer_size": 355,
+						"buffer_size": 3276,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								73,
-								73
+								2293,
+								2293
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1113.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "core/Shape/Text.js",
+					"settings":
+					{
+						"buffer_size": 330,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								177,
+								177
 							]
 						],
 						"settings":
@@ -915,46 +1019,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "core/Assets/AssetManager.js",
-					"settings":
-					{
-						"buffer_size": 2312,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2115,
-								2115
-							]
-						],
-						"settings":
-						{
-							"auto_name": "define(function() {",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 70.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 3,
-					"file": "core/Game.js",
+					"file": "core/Shape/BaseShape.js",
 					"settings":
 					{
-						"buffer_size": 1829,
+						"buffer_size": 1499,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8,
-								8
+								941,
+								941
 							]
 						],
 						"settings":
@@ -970,18 +1047,18 @@
 				},
 				{
 					"buffer": 4,
-					"file": "core/didjs.js",
+					"file": "core/Shape/AABBObject.js",
 					"settings":
 					{
-						"buffer_size": 263,
+						"buffer_size": 225,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								108,
-								108
+								0,
+								0
 							]
 						],
 						"settings":
@@ -996,10 +1073,10 @@
 				},
 				{
 					"buffer": 5,
-					"file": "core/world.js",
+					"file": "core/Shape/Rectangle.js",
 					"settings":
 					{
-						"buffer_size": 3277,
+						"buffer_size": 364,
 						"regions":
 						{
 						},
@@ -1012,8 +1089,7 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1023,18 +1099,100 @@
 				},
 				{
 					"buffer": 6,
-					"file": "core/Loaders/ImageLoader.js",
+					"file": "core/Renderers/ShapeRenderer.js",
 					"settings":
 					{
-						"buffer_size": 846,
+						"buffer_size": 2852,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								481,
-								481
+								2847,
+								2847
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "core/Keyboard.js",
+					"settings":
+					{
+						"buffer_size": 3433,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2474,
+								2474
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1372.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "core/Game.js",
+					"settings":
+					{
+						"buffer_size": 1846,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1799,
+								1799
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 701.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "core/Shape/Circle.js",
+					"settings":
+					{
+						"buffer_size": 578,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								303,
+								575
 							]
 						],
 						"settings":
@@ -1049,11 +1207,38 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "core/Loaders/FileLoader.js",
+					"buffer": 10,
+					"file": "core/Shape/ShapeFactory.js",
 					"settings":
 					{
-						"buffer_size": 651,
+						"buffer_size": 1247,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								710,
+								710
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 154.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "core/didjs.js",
+					"settings":
+					{
+						"buffer_size": 255,
 						"regions":
 						{
 						},
@@ -1066,8 +1251,60 @@
 						],
 						"settings":
 						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "core/Renderers/Renderer.js",
+					"settings":
+					{
+						"buffer_size": 329,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								243,
+								300
+							]
+						],
+						"settings":
+						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 456,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								143,
+								143
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1134,6 +1371,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 260.0,
+	"side_bar_width": 259.0,
 	"status_bar_visible": true
 }
